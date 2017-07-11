@@ -26,10 +26,7 @@ products = [
 ##section 1-printing products and prices
 
 print "---------------"
-print "THERE ARE",len(products), "PRODUCTS"
-
-#for p in products:
-#    print "+",p["name"],"($",p["price"],")"
+print "THERE ARE " + str(len(products)) + " PRODUCTS:"
 
 def prod_name(products):
     return products["name"]
@@ -45,21 +42,26 @@ for f in prod_sort:
 ##section 2 output departments and product count
 print "---------------"
 
+import itertools
 from itertools import groupby
 from operator import itemgetter
 
-#def prod_dep(products):
-    #return products["department"]
+def prod_dep(products):
+    return products["department"]
 
-#dep_sort = sorted(products,key=prod_dep)
+dep_sort = sorted(products,key=prod_dep)
 
-#for d in dep_sort:
-#    print "+", d["department"],
+for d in dep_sort:
+   print "+", d["department"],
 
 prod_dep = sorted(products, key=itemgetter('department'))
 
+print prod_dep
+
 for k,v in itertools.groupby(products, key=itemgetter('department')):
-    print
+    print k
+    for prod in v:
+        print prod
 
 
 
