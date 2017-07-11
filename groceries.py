@@ -1,4 +1,9 @@
 import code
+import operator
+import itertools
+from itertools import groupby
+from operator import itemgetter
+
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -41,14 +46,11 @@ for p in prod_sort:
 ##section 2 output departments and product count
 print "---------------"
 
-import itertools
-from itertools import groupby
-from operator import itemgetter
-
 def prod_dep(products):
     return products["department"]
 
 dep_sort = sorted(products,key=prod_dep)
+##alternate method: use dep_sort = sorted(products, key = operator.itemgetter("name"))
 
 for d in dep_sort:
    print "+", d["department"],
