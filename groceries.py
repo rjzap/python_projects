@@ -35,9 +35,8 @@ prod_sort = sorted(products,key=prod_name)
 
 #print prod_sort
 
-for f in prod_sort:
-    print "+",f["name"],"($",f["price"],")"
-
+for p in prod_sort:
+    print " + ",p["name"],"($",p["price"],")"
 
 ##section 2 output departments and product count
 print "---------------"
@@ -62,8 +61,6 @@ for k,v in itertools.groupby(products, key=itemgetter('department')):
     print k
     for prod in v:
         print prod
-
-
 
 print "THERE ARE"
 
