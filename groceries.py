@@ -41,7 +41,8 @@ prod_sort = sorted(products,key=prod_name)
 #print prod_sort
 
 for p in prod_sort:
-    print " + ",p["name"],"($",p["price"],")"
+    price_usd = ' (${0:.2f})'.format(p["price"])
+    print " + ",p["name"], price_usd
 
 ##section 2 output departments and product count
 print "---------------"
