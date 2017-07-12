@@ -52,20 +52,13 @@ departments = []
 for product in products:
     departments.append(product["department"])
 
-departments = sorted(list(set(departments)))
+unique_departments = sorted(list(set(departments)))
 
-print "THERE ARE " + str(len(departments)) + " DEPARTMENTS"
+print "THERE ARE " + str(len(unique_departments)) + " DEPARTMENTS"
 
-for d in departments:
-    #print " + ", d[:1].upper() + d[1:]
-    print " + ", d.title()
-
-
-def prod_dep(products):
-    return products["department"]
-
-dep_sort = sorted(products,key=prod_dep)
-##alternate method: use dep_sort = sorted(products, key = operator.itemgetter("name"))
+for dep_name in unique_departments:
+    product_count = departments.count(dep_name)
+    print " + ", dep_name.title() + " (" + str(product_count) + " products)"
 
 #for k,v in itertools.groupby(products, key=itemgetter('department')):
     #print k
@@ -78,4 +71,4 @@ dep_sort = sorted(products,key=prod_dep)
     #print "+", d["department"]
 
 
-# code.interact(local=locals())
+#code.interact(local=locals())
