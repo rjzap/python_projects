@@ -54,21 +54,10 @@ for product in products:
 
 unique_departments = sorted(list(set(departments)))
 
-print "THERE ARE " + str(len(unique_departments)) + " DEPARTMENTS"
+print "THERE ARE " + str(len(unique_departments)) + " DEPARTMENTS:"
 
 for dep_name in unique_departments:
     product_count = departments.count(dep_name)
     print " + ", dep_name.title() + " (" + str(product_count) + " products)"
-
-#for k,v in itertools.groupby(products, key=itemgetter('department')):
-    #print k
-    #for prod in v:
-        #print prod
-
-#print "THERE ARE"
-
-#for d in products:
-    #print "+", d["department"]
-
 
 #code.interact(local=locals())
