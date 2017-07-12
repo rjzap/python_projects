@@ -30,8 +30,8 @@ products = [
 
 ##section 1-printing products and prices
 
-print "---------------"
-#print "THERE ARE " + str(len(products)) + " PRODUCTS:"
+print "--------------"
+print "THERE ARE " + str(len(products)) + " PRODUCTS:"
 
 def prod_name(products):
     return products["name"]
@@ -42,35 +42,30 @@ prod_sort = sorted(products,key=prod_name)
 
 for p in prod_sort:
     price_usd = ' (${0:.2f})'.format(p["price"])
-    #print " + ",p["name"], price_usd
+    print " + ",p["name"], price_usd
 
 ##section 2 output departments and product count
-print "---------------"
+print "--------------"
 
 departments = []
 
 for product in products:
     departments.append(product["department"])
 
-departments = list(set(departments))
+departments = sorted(list(set(departments)))
+
+print "THERE ARE " + str(len(departments)) + " DEPARTMENTS"
 
 for d in departments:
-    print " + ", d 
+    #print " + ", d[:1].upper() + d[1:]
+    print " + ", d.title()
 
-#print departments
 
 def prod_dep(products):
     return products["department"]
 
 dep_sort = sorted(products,key=prod_dep)
 ##alternate method: use dep_sort = sorted(products, key = operator.itemgetter("name"))
-
-#for d in dep_sort:
-   #print "+", d["department"],
-
-prod_dep = sorted(products, key=itemgetter('department'))
-
-#print prod_dep
 
 #for k,v in itertools.groupby(products, key=itemgetter('department')):
     #print k
