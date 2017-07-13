@@ -1,4 +1,6 @@
+product_id = input("Please input a valid product idenitifer:")
 
+print "the product identifier is:" + str(product_id)
 
 
 
