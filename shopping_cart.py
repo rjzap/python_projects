@@ -1,6 +1,14 @@
-product_id = input("Please input a valid product idenitifer:")
 
-print "the product identifier is:" + str(product_id)
+product_ids =[]
+
+while True:
+    user_input = input("Please input a valid product idenitifer:")
+    if user_input == "DONE":
+        print "thanks, all done here"
+        break
+    else:
+        print "the product identifier is:" + str(user_input)
+        product_ids.append(user_input)
 
 
 
