@@ -1,4 +1,4 @@
-
+from datetime import datetime as dt
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -24,6 +24,7 @@ products = [
 ] # Products based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
 product_ids =[1,10,20,15]
+co_time = dt.now().strftime('%Y-%m-%d %H:%M:%S')
 
 #while True:
 #    user_input = input("Please input a valid product idenitifer:")
@@ -33,6 +34,14 @@ product_ids =[1,10,20,15]
 #    else:
 #        print "the product identifier is:" + str(user_input)
 #        product_ids.append(user_input)
+
+print '----------------------------------------'
+print 'NYC Grocers'
+print '----------------------------------------'
+print 'Web: www.nycgrocers.com'
+print 'Phone: 1.212.555.1234'
+print 'Checkout time: ', co_time
+print '----------------------------------------'
 
 def lookup_nm(product_ids):
     return [d['name'] for d in products if d['id'] == product_ids]
@@ -45,22 +54,26 @@ sub = []
 for i in product_ids:
     item_names = lookup_nm(i)
     item_costs = lookup_px(i)
+    for i in item_names:
+        name = ", ".join(str(i) for i in item_names)
     for i in item_costs:
         price_usd = ' (${0:.2f})'.format(i)
     for i in item_costs:
         sub.append(float(i))
-    print " + ", ", ".join(str(i) for i in item_names), price_usd
+    print " + ", name, price_usd
 
 subtotal = sum(sub)
-
-print 'SUBTOTAL:', '${0:.2f}'.format(subtotal)
-
 tax_rate = .08875
 sales_tax = subtotal * tax_rate
 total = subtotal + sales_tax
+subtotal = '${0:.2f}'.format(subtotal)
 tax_rate = "({0:.3f}%):".format(tax_rate * 100)
 sales_tax = '${0:.2f}'.format(sales_tax)
 total = '${0:.2f}'.format(total)
 
+print '----------------------------------------'
+print 'SUBTOTAL:', subtotal
 print "Plus NYC Sales Tax", tax_rate, sales_tax
 print 'TOTAL:', total
+print '----------------------------------------'
+print 'Thanks for your business! Please come again.'
