@@ -40,7 +40,7 @@ def lookup_nm(product_ids):
 def lookup_px(product_ids):
     return [d['price'] for d in products if d['id'] == product_ids]
 
-subtotal = []
+sub = []
 
 for i in product_ids:
     item_names = lookup_nm(i)
@@ -48,8 +48,19 @@ for i in product_ids:
     for i in item_costs:
         price_usd = ' (${0:.2f})'.format(i)
     for i in item_costs:
-        subtotal.append(float(i))
+        sub.append(float(i))
     print " + ", ", ".join(str(i) for i in item_names), price_usd
 
+subtotal = sum(sub)
 
-print 'SUBTOTAL :', ' ${0:.2f}'.format(sum(subtotal))
+print 'SUBTOTAL:', '${0:.2f}'.format(subtotal)
+
+tax_rate = .08875
+sales_tax = subtotal * tax_rate
+total = subtotal + sales_tax
+tax_rate = "({0:.3f}%):".format(tax_rate * 100)
+sales_tax = '${0:.2f}'.format(sales_tax)
+total = '${0:.2f}'.format(total)
+
+print "Plus NYC Sales Tax", tax_rate, sales_tax
+print 'TOTAL:', total
