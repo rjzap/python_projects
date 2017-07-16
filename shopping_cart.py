@@ -1,16 +1,4 @@
 
-product_ids =[]
-
-while True:
-    user_input = input("Please input a valid product idenitifer:")
-    if user_input == "DONE":
-        print "thanks, all done here"
-        break
-    else:
-        print "the product identifier is:" + str(user_input)
-        product_ids.append(user_input)
-
-
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -34,3 +22,34 @@ products = [
     {"id":19, "name": "Gluten Free Quinoa Three Cheese & Mushroom Blend", "department": "dry goods pasta", "aisle": "grains rice dried goods", "price": 3.99},
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # Products based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
+
+product_ids =[1,10,20,15]
+
+#while True:
+#    user_input = input("Please input a valid product idenitifer:")
+#    if user_input == "DONE":
+#        print "thanks, all done here"
+#        break
+#    else:
+#        print "the product identifier is:" + str(user_input)
+#        product_ids.append(user_input)
+
+def lookup_nm(product_ids):
+    return [d['name'] for d in products if d['id'] == product_ids]
+
+def lookup_px(product_ids):
+    return [d['price'] for d in products if d['id'] == product_ids]
+
+subtotal = []
+
+for i in product_ids:
+    item_names = lookup_nm(i)
+    item_costs = lookup_px(i)
+    for i in item_costs:
+        price_usd = ' (${0:.2f})'.format(i)
+    for i in item_costs:
+        subtotal.append(float(i))
+    print " + ", ", ".join(str(i) for i in item_names), price_usd
+
+
+print 'SUBTOTAL :', ' ${0:.2f}'.format(sum(subtotal))
