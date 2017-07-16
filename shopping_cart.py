@@ -23,17 +23,16 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # Products based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-product_ids =[1,10,20,15]
+product_ids =[]
 co_time = dt.now().strftime('%Y-%m-%d %H:%M:%S')
 
-#while True:
-#    user_input = input("Please input a valid product idenitifer:")
-#    if user_input == "DONE":
-#        print "thanks, all done here"
-#        break
-#    else:
-#        print "the product identifier is:" + str(user_input)
-#        product_ids.append(user_input)
+while True:
+    user_input = raw_input("Please input a valid product idenitifer, or 'DONE' if there are no more items:")
+    if user_input == "DONE":
+        break
+    else:
+        print "the product identifier is:" + str(user_input)
+        product_ids.append(user_input)
 
 print '----------------------------------------'
 print 'NYC Grocers'
