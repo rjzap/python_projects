@@ -31,8 +31,7 @@ while True:
     if user_input == "DONE":
         break
     else:
-        print "the product identifier is:" + str(user_input)
-        product_ids.append(user_input)
+        product_ids.append(int(user_input))
 
 print '----------------------------------------'
 print 'NYC Grocers'
